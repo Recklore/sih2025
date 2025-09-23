@@ -1,3 +1,5 @@
 **/__pycache/
 .env
 pdfs/
+ocr_texts/
+sorted_data/
