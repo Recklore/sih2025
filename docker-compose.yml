@@ -1,0 +1,18 @@
+---
+version: '3.4'
+services:
+  weaviate:
+    image: cr.weaviate.io/semitechnologies/weaviate:latest
+    ports:
+      - "8080:8080"
+      - "50051:50051"
+    restart: on-failure:0
+    environment:
+      QUERY_DEFAULTS_LIMIT: 25
+      AUTHENTICATION_ANONYMOUS_ENABLED: 'true'
+      PERSISTENCE_DATA_PATH: '/var/lib/weaviate'
+      # --- THIS IS THE ONLY CHANGE ---
+      # We tell Weaviate to NOT use a vectorizer module. Python will do the work.
+      DEFAULT_VECTORIZER_MODULE: 'none'
+      # We can also remove the API key as Weaviate no longer needs it.
+      CLUSTER_HOSTNAME: 'node1'
