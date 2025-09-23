@@ -1,0 +1,7 @@
+llama-index
+weaviate-client
+python-dotenv
+llama-index-vector-stores-weaviate
+llama-index-llms-google-genai
+llama-index-embeddings-google-genai
+pypdf

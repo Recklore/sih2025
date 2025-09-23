@@ -1,9 +1,41 @@
 import os
 import shutil
 import subprocess
-from typing import Optional
+import re
+from typing import Optional, List
 
 import fitz  # PyMuPDF
+
+# ==============================================================================
+# ### NEW - CONFIGURATION FOR CLEANING ###
+# ==============================================================================
+# IMPORTANT: You MUST customize this list with common, repetitive text
+# found in the headers or footers of YOUR documents.
+COMMON_HEADERS_FOOTERS: List[str] = [
+    "9th ANNUAL REPORT 2017-2018",
+    "CENTRAL UNIVERSITY OF RAJASthan",
+    # Add more common phrases you find here...
+]
+
+# ==============================================================================
+# ### NEW - The Cleaning Function ###
+# ==============================================================================
+def clean_page_text(text: str, headers_footers: List[str]) -> str:
+    """
+    Cleans the raw OCR text for a single page.
+    """
+    # 1. Remove non-ASCII characters and other OCR noise
+    text = re.sub(r'[^\x00-\x7F]+', '', text)
+
+    # 2. Remove user-defined common headers and footers
+    for item in headers_footers:
+        # Case-insensitive replacement
+        text = re.sub(re.escape(item), '', text, flags=re.IGNORECASE)
+
+    # 3. Normalize whitespace: replace multiple spaces/newlines with a single space
+    text = re.sub(r'\s+', ' ', text).strip()
+
+    return text
 
 
 def is_digital(pdf_path: str) -> bool:
