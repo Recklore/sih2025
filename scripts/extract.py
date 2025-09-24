@@ -1,48 +1,16 @@
 import os
 import shutil
 import subprocess
-import re
-from typing import Optional, List
+from typing import Optional
 
 import fitz  # PyMuPDF
-
-# ==============================================================================
-# ### NEW - CONFIGURATION FOR CLEANING ###
-# ==============================================================================
-# IMPORTANT: You MUST customize this list with common, repetitive text
-# found in the headers or footers of YOUR documents.
-COMMON_HEADERS_FOOTERS: List[str] = [
-    "9th ANNUAL REPORT 2017-2018",
-    "CENTRAL UNIVERSITY OF RAJASthan",
-    # Add more common phrases you find here...
-]
-
-# ==============================================================================
-# ### NEW - The Cleaning Function ###
-# ==============================================================================
-def clean_page_text(text: str, headers_footers: List[str]) -> str:
-    """
-    Cleans the raw OCR text for a single page.
-    """
-    # 1. Remove non-ASCII characters and other OCR noise
-    text = re.sub(r'[^\x00-\x7F]+', '', text)
-
-    # 2. Remove user-defined common headers and footers
-    for item in headers_footers:
-        # Case-insensitive replacement
-        text = re.sub(re.escape(item), '', text, flags=re.IGNORECASE)
-
-    # 3. Normalize whitespace: replace multiple spaces/newlines with a single space
-    text = re.sub(r'\s+', ' ', text).strip()
-
-    return text
 
 
 def is_digital(pdf_path: str) -> bool:
     try:
         with fitz.open(pdf_path) as doc:
             text_pages = sum(1 for page in doc if page.get_text().strip())
-            if doc.page_count != text_pages:
+            if doc.page_count / 2 > text_pages:
                 return False
             return True
     except Exception:
@@ -119,10 +87,10 @@ def process_pdf(pdf_path: str, repaired_dir: str, ocr_dir: str, error_dir: Optio
 
 
 def main(
-    input_dir: str = "../pdfs",
-    repaired_dir: str = "../sorted_data/repaired",
-    ocr_dir: str = "../ocr_texts",
-    error_dir: Optional[str] = "../sorted_data/error",
+    input_dir: str = "./pdfs",
+    repaired_dir: str = "./sorted_data/repaired",
+    ocr_dir: str = "./sorted_data/ocr_texts",
+    error_dir: Optional[str] = "./sorted_data/error",
     limit: Optional[int] = 50,
 ):
     if not os.path.isdir(input_dir):
