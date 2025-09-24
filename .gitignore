@@ -3,3 +3,7 @@
 pdfs/
 ocr_texts/
 sorted_data/
+data/
+venv/
+*.pyc
+qdrant_storage/
