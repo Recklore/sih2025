@@ -87,7 +87,7 @@ def process_pdf(pdf_path: str, repaired_dir: str, ocr_dir: str, error_dir: Optio
 
 
 def main(
-    input_dir: str = "./pdfs",
+    input_dir: str = "./data/pdfs",
     repaired_dir: str = "./sorted_data/repaired",
     ocr_dir: str = "./sorted_data/ocr_texts",
     error_dir: Optional[str] = "./sorted_data/error",

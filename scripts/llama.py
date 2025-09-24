@@ -104,39 +104,3 @@ with weaviate.connect_to_weaviate_cloud(
 #     "The Embedding model sees this: \n",
 #     docs[-1].get_content(metadata_mode=MetadataMode.EMBED),
 # )
-
-# try:
-#     schema = client.schema.get(index_name)
-#     count = client.query.aggregate(index_name).with_meta("count").do()
-#     object_count = count["data"]["Aggregate"][index_name][0]["meta"]["count"]
-#     data_exists = object_count > 0
-# except weaviate.exceptions.UnexpectedStatusCodeException:
-#     print(f"Index '{index_name}' does not exist. Proceeding with data ingestion.")
-#     data_exists = False
-
-
-# if not data_exists:
-
-#     docs = reader.load_data()
-
-#     for doc in docs:
-#         doc.text_template = "Metadata:\n{metadata_str}\n---\nContent:\n{content}"
-
-#         doc.excluded_embed_metadata_keys = [key for key in doc.metadata.keys() if key != "file_name"]
-#         doc.excluded_llm_metadata_keys = [key for key in doc.metadata.keys() if key != "file_name"]
-
-#     nodes = splitter.get_nodes_from_documents(docs)
-#     print(f"Chunked documents into {len(nodes)} nodes.")
-
-#     vector_store = WeaviateVectorStore(weaviate_client=client, index_name=index_name)
-
-#     index = VectorStoreIndex(
-#         nodes=nodes,
-#         vector_store=vector_store,
-#     )
-
-#     print("Successfully created index and stored embeddings in Weaviate.")
-
-# else:
-#     vector_store = WeaviateVectorStore(weaviate_client=client, index_name=index_name)
-#     index = VectorStoreIndex.from_vector_store(vector_store=vector_store)
