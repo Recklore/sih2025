@@ -1,0 +1,101 @@
+@charset "utf-8";
+ @media print {
+.container {
+	width:100% !important;
+}
+.header-container {
+	width:98% !important;
+	padding:10px 0px !important;
+}
+body {
+	font-family:Arial, Helvetica, sans-serif;
+	color:#000 !important;
+}
+.logo{ width:300px !important; float:left;}
+body p {
+	line-height:22px !important;
+}
+.region-header-top, .nav-wrapper, .flexslider, .lower_cont, .footer-top-wrapper, .block-easy-breadcrumb-easy-breadcrumb, .carousel-wrapper, .toggle-nav-bar,  .whats-new-image, .region-highlighted, .gtranslate, .left-sidebar, .breadcrumb-wrapper, .block-webspeech, .gallery_all, .floating-form{
+	display:none !important;
+}
+.logo-cmf, .copyright-content,.gtranslate {
+    float: none;
+    width: 100% !important;
+    text-align: center;
+	border-right: none;
+}
+.wnhead {
+    padding-top: 0;
+}
+.enheadwn {
+    width: 100%;
+}
+ul.quicktabs-tabs.quicktabs-style-basic li.active a {
+    color: #000;
+}
+.whats-new-image{
+	padding:0;
+}
+.top-body-wrapper-left .left_row2 > ul li ul li {
+    width: 100% !important;
+}
+.top-body-wrapper-left .left_row2 > ul li {
+    width: 33% !important;
+    float: left;
+}
+.connecting-bharat img {
+    display: none;
+}
+.connecting-bharat{
+	width:100%;
+}
+.connecting-bharat ul li {
+    padding:0;
+    width: 25%;
+    float: left;
+}
+.connecting-bharat ul {
+    width: 100%;
+}
+.connecting-bharat ul li a{
+	color:#000;
+}
+.rightportion, .top-body-wrapper-left, .whats-new-title {
+    width: 100%;
+    float: left;
+	border:none;
+}
+.whats-new-panel, .connecting-bharat, .body-panel3-wrapper, .connecting-bharat ul li{
+    background: none;
+}
+.whats-new-title, .whats-new-text-cont {
+    min-height: auto;
+    margin: 0;
+    padding: 0 !important;
+}
+.whats-new-title span {
+    font-size: inherit;
+}
+.top-body-wrapper-right {
+    width: 100% !important;
+    float: left;
+    position: static;
+}
+.body-panel3-wrapper, .shade-bg{
+    background: none;
+}
+.whats-new-text-cont span {
+    color: #000;
+}
+ul.quicktabs-tabs.quicktabs-style-basic a {
+    padding: 10px 5px;
+}
+.left-sidebar {
+    display: none;
+}
+#right_content {
+    width: 100%;
+    float: left;
+    padding-left: 0;
+}
+}

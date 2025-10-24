@@ -1,0 +1,4 @@
+**/__pycache__/
+.env
+pdfs/
+scripts_trash

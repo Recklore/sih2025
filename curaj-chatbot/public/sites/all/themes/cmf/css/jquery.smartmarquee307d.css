@@ -1,0 +1,14 @@
+/*.smartmarquee {
+	position: relative;
+	overflow: hidden;
+}
+.smartmarquee .container {
+	position: absolute;
+}
+.news-list {    height: 220px;
+    width: 209px;}
+.news-list .container { padding:0px;}
+.news-list .container li {   margin: 0 0 0 5px;   padding: 10px 0 3px 0 !important; }*/
+
+
+.news-list{height: 220px; position:relative;overflow:hidden} .news-list ul[class^='list-']{height:100%;overflow:hidden}
